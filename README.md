@@ -150,7 +150,10 @@ In the `config.json` file you will see an empty template. Fill it with your data
 
 ### Snipe mode (optional):
 
-If you want to automatically buy new collections, add to account:
+The program has two operating modes depending on the `snipe_monitor` setting:
+
+#### 🎯 **Snipe Monitor Mode** (`"enabled": true`)
+If you want to automatically monitor and buy NEW collections as they appear, add to account:
 
 ```json
 "snipe_monitor": {
@@ -167,7 +170,32 @@ If you want to automatically buy new collections, add to account:
 }
 ```
 
-- **`enabled`** - Enable snipe mode (true/false)
+**How it works:**
+- The program will **monitor** for new collections that match your criteria
+- When a new collection appears, it will automatically try to mint it
+- The `collection` and `character` IDs in the account settings are **ignored**
+- Perfect for catching new drops and rare collections
+
+#### 🎯 **Direct Mint Mode** (`"enabled": false` or no snipe_monitor section)
+If you want to mint specific collections immediately:
+
+```json
+{
+  "name": "My Account",
+  "collection": 123,
+  "character": 456,
+  // ... other settings
+  // No snipe_monitor section or "enabled": false
+}
+```
+
+**How it works:**
+- The program will **immediately** try to mint the specified `collection` and `character` IDs
+- No monitoring - direct action
+- Perfect when you know exactly what you want to mint
+
+#### Snipe Monitor Settings:
+- **`enabled`** - Enable snipe mode (true = monitor mode, false = direct mint mode)
 - **`supply_range`** - Range of sticker quantity (min-max)
 - **`price_range`** - Price range in nanotons (1 TON = 1000000000 nanotons)
 - **`word_filter`** - List of words to search for in collection names
