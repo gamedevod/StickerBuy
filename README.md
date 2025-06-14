@@ -28,6 +28,7 @@
 ║  ⚓ Developed by: DUO ON DECK Team                                           ║
 ║  🚀 Project: Telegram Auto Buy                                              ║
 ║  📧 Support: @black_beard68                                                 ║
+║  📢 Channel: @two_on_deck                                                   ║
 ║  🌊 "Two minds, one mission - sailing the crypto seas!"                     ║
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
@@ -36,6 +37,8 @@
 ## 🎯 What is this?
 
 Telegram Auto Buy is a program for automatic sticker purchasing in Telegram. The program can:
+
+> 📢 **Stay updated!** Join our official channel [@two_on_deck](https://t.me/two_on_deck) for latest updates, tips and life-changing opportunities!
 
 - **Buy stickers automatically** - set it up once, the program works by itself
 - **Work with multiple accounts** - you can add many Telegram accounts
@@ -267,7 +270,8 @@ If you encounter problems:
 4. Check program logs for errors
 
 **Need help?** Contact our support team:
-- 📧 Telegram: [@black_beard68](https://t.me/black_beard68)
+- 📧 Support: [@black_beard68](https://t.me/black_beard68)
+- 📢 Channel: [@two_on_deck](https://t.me/two_on_deck)
 - ⚓ Team: **DUO ON DECK** - "Two minds, one mission!"
 
 ---
