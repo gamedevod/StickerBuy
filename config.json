@@ -6,7 +6,7 @@
   "retry_count": 3,
   "use_proxy": false,
   "proxy_url": "",
-  "test_mode": true,
+  "test_mode": false,
   "test_address": "",
   "api_id": ,
   "api_hash": "",
