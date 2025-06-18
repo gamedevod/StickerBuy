@@ -365,6 +365,7 @@
       "count": 1,
       "threads": 1,
       "max_transactions": 0,
+      "purchase_delay_ms": 100,
       "seed_phrase": "",
       "snipe_monitor": {
         "enabled": false,
@@ -376,6 +377,7 @@
           "min": 1000000000,
           "max": 10000000000
         },
+        "monitor_delay_ms": 1000,
         "word_filter": ["keyword1", "keyword2"]
       }
     }
@@ -401,6 +403,7 @@
       "count": 1,
       "threads": 1,
       "max_transactions": 10,
+      "purchase_delay_ms": 100,
       "seed_phrase": "word1 word2 word3 ... word24",
       "snipe_monitor": {
         "enabled": false,
@@ -412,6 +415,7 @@
           "min": 1000000000,
           "max": 10000000000
         },
+        "monitor_delay_ms": 1000,
         "word_filter": ["azuki", "pokemon", "cryptopunks"]
       }
     }
@@ -486,12 +490,44 @@
                         <td>Максимум транзакций (0 = без лимита)</td>
                     </tr>
                     <tr>
+                        <td><code>purchase_delay_ms</code></td>
+                        <td>Задержка между запросами покупки в миллисекундах (по умолчанию: 100)</td>
+                    </tr>
+                    <tr>
                         <td><code>seed_phrase</code></td>
                         <td>Seed фраза TON кошелька (12-24 слова через пробел)</td>
                     </tr>
                     <tr>
                         <td><code>snipe_monitor</code></td>
                         <td>Настройки снайп мониторинга (опционально)</td>
+                    </tr>
+                </table>
+                
+                <h3><span class="emoji">⚙️</span> Настройки снайп мониторинга (<code>snipe_monitor</code>):</h3>
+                <table>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Описание</th>
+                    </tr>
+                    <tr>
+                        <td><code>enabled</code></td>
+                        <td>Включить снайп режим (true = мониторинг новых коллекций, false = прямая покупка)</td>
+                    </tr>
+                    <tr>
+                        <td><code>supply_range</code></td>
+                        <td>Диапазон количества стикеров (min-max)</td>
+                    </tr>
+                    <tr>
+                        <td><code>price_range</code></td>
+                        <td>Диапазон цены в нанотонах (1 TON = 1000000000 нанотон)</td>
+                    </tr>
+                    <tr>
+                        <td><code>monitor_delay_ms</code></td>
+                        <td>Задержка между запросами мониторинга (в миллисекундах)</td>
+                    </tr>
+                    <tr>
+                        <td><code>word_filter</code></td>
+                        <td>Список слов для поиска в названии коллекции</td>
                     </tr>
                 </table>
             </div>
@@ -545,9 +581,9 @@
                         <td>Включить/выключить прокси для аккаунта</td>
                     </tr>
                     <tr>
-                        <td><code>proxy_url</code></td>
-                        <td>string</td>
-                        <td>Адрес прокси в указанном формате</td>
+                        <td><code>proxies.txt</code></td>
+                        <td>file</td>
+                        <td>Файл со списком прокси (один прокси на строку)</td>
                     </tr>
                 </table>
                 
@@ -650,6 +686,7 @@
       "min": 500000000,
       "max": 5000000000
     },
+    "monitor_delay_ms": 1000,
     "word_filter": ["rare", "limited", "exclusive"]
   }
 }
@@ -701,6 +738,10 @@
                     <tr>
                         <td><code>price_range</code></td>
                         <td>Диапазон цены в нанотонах (1 TON = 1000000000 нанотон)</td>
+                    </tr>
+                    <tr>
+                        <td><code>monitor_delay_ms</code></td>
+                        <td>Задержка между запросами мониторинга (в миллисекундах)</td>
                     </tr>
                     <tr>
                         <td><code>word_filter</code></td>
@@ -1079,6 +1120,7 @@
       "count": 1,
       "threads": 1,
       "max_transactions": 0,
+      "purchase_delay_ms": 100,
       "seed_phrase": "",
       "snipe_monitor": {
         "enabled": false,
@@ -1090,6 +1132,7 @@
           "min": 1000000000,
           "max": 10000000000
         },
+        "monitor_delay_ms": 1000,
         "word_filter": ["keyword1", "keyword2"]
       }
     }
@@ -1115,6 +1158,7 @@
       "count": 1,
       "threads": 1,
       "max_transactions": 10,
+      "purchase_delay_ms": 100,
       "seed_phrase": "word1 word2 word3 ... word24",
       "snipe_monitor": {
         "enabled": false,
@@ -1126,6 +1170,7 @@
           "min": 1000000000,
           "max": 10000000000
         },
+        "monitor_delay_ms": 1000,
         "word_filter": ["azuki", "pokemon", "cryptopunks"]
       }
     }
@@ -1200,12 +1245,44 @@
                         <td>Maximum transactions (0 = no limit)</td>
                     </tr>
                     <tr>
+                        <td><code>purchase_delay_ms</code></td>
+                        <td>Delay between purchase requests in milliseconds (default: 100)</td>
+                    </tr>
+                    <tr>
                         <td><code>seed_phrase</code></td>
                         <td>TON wallet seed phrase (12-24 words separated by spaces)</td>
                     </tr>
                     <tr>
                         <td><code>snipe_monitor</code></td>
                         <td>Snipe monitoring settings (optional)</td>
+                    </tr>
+                </table>
+                
+                <h3><span class="emoji">⚙️</span> Snipe monitoring settings (<code>snipe_monitor</code>):</h3>
+                <table>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>enabled</code></td>
+                        <td>Enable snipe mode (true = monitor new collections, false = direct purchase)</td>
+                    </tr>
+                    <tr>
+                        <td><code>supply_range</code></td>
+                        <td>Range of sticker quantity (min-max)</td>
+                    </tr>
+                    <tr>
+                        <td><code>price_range</code></td>
+                        <td>Price range in nanotons (1 TON = 1000000000 nanotons)</td>
+                    </tr>
+                    <tr>
+                        <td><code>monitor_delay_ms</code></td>
+                        <td>Delay between monitoring requests (in milliseconds)</td>
+                    </tr>
+                    <tr>
+                        <td><code>word_filter</code></td>
+                        <td>List of words to search for in collection names</td>
                     </tr>
                 </table>
             </div>
@@ -1259,9 +1336,9 @@
                         <td>Enable/disable proxy for the account</td>
                     </tr>
                     <tr>
-                        <td><code>proxy_url</code></td>
-                        <td>string</td>
-                        <td>Proxy address in the specified format</td>
+                        <td><code>proxies.txt</code></td>
+                        <td>file</td>
+                        <td>File with proxy list (one proxy per line)</td>
                     </tr>
                 </table>
                 
@@ -1364,6 +1441,7 @@
       "min": 500000000,
       "max": 5000000000
     },
+    "monitor_delay_ms": 1000,
     "word_filter": ["rare", "limited", "exclusive"]
   }
 }
@@ -1415,6 +1493,10 @@
                     <tr>
                         <td><code>price_range</code></td>
                         <td>Price range in nanotons (1 TON = 1000000000 nanotons)</td>
+                    </tr>
+                    <tr>
+                        <td><code>monitor_delay_ms</code></td>
+                        <td>Delay between monitoring requests (in milliseconds)</td>
                     </tr>
                     <tr>
                         <td><code>word_filter</code></td>
